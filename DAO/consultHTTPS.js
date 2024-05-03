@@ -1,5 +1,7 @@
 var express = require('express');
+
 var fs = require('fs');
+
 var https = require('https');
 
 var options = {
@@ -10,6 +12,17 @@ var options = {
     rejectUnauthorized: true
 };
 
+
+// const router = express.Router();
+// const controller = require('../controllers/personController')
+// router.post('/', controller.post);
+// router.put('/:id', controller.put);
+// router.delete('/:id', controller.delete);
+// module.exports = router;
+
+
+
+
 var app = express();
 
 const { getAllUsers, getUserById, addUser, updateUser, deleteUser } = require('./connection');
@@ -19,6 +32,7 @@ app.set('port', process.env.PORT || 443); // Set the port
 
 // Define middleware
 app.use(express.json()); // Parse JSON bodies
+
 app.use(express.urlencoded({ extended: false })); // Parse URL-encoded bodies
 
 // Create an HTTPS server using the Express app and SSL/TLS options
@@ -28,7 +42,6 @@ var server = https.createServer(options, app);
 server.listen(app.get('port'), function () {
     console.log("Started listening");
 });
-
 
 // Define routes
 app.get('/', function (req, res) {

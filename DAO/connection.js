@@ -1,7 +1,6 @@
 // npm install mysql
 
-
-// //database.js - classe
+//database.js - classe
 
 const mysql = require('mysql2');
 
@@ -12,8 +11,6 @@ const connection = mysql.createConnection({
   database: 'banco_usuarios'
 });
 
-
-
 connection.connect((err) => {
   if (err) {
     console.error('Erro ao conectar ao banco de dados: ', err);
@@ -23,7 +20,6 @@ connection.connect((err) => {
 });
 
 module.exports = connection;
-
 
 // const connection = require('./database');
 
@@ -39,7 +35,6 @@ function getAllUsers() {
     });
   });
 }
-
 
 function getUserById(id) {
 
